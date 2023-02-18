@@ -1,4 +1,4 @@
-service: my-store-app
+service: shastakou-store-app
 
 frameworkVersion: "3"
 
@@ -11,7 +11,7 @@ provider:
 
 plugins:
   - serverless-finch
-  # 'serverless-single-page-app-plugin' is a custom plugin that located .serverless_plugins folder.
+  # 'serverless-single-page-app-plugin' is a custom plugin that located in appropriate folder.
   # Existing plugin (https://www.npmjs.com/package/serverless-single-page-app-plugin) doesn't have invalidate cache feature that often used during CI/CD events.
   # How to build your own plugins: https://www.serverless.com/framework/docs/providers/aws/guide/plugins#service-local-plugin
   - serverless-single-page-app-plugin
@@ -19,7 +19,7 @@ plugins:
 
 custom:
   client:
-    bucketName: my-store-app
+    bucketName: shastakou-store-app
     distributionFolder: dist
   s3BucketName: ${self:custom.client.bucketName}
 
