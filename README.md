@@ -46,7 +46,7 @@ Deploy the project build from `dist` folder to configured in `serverless.yml` AW
 
 Combination of `build` and `client:deploy` commands with or without confirmation.
 
-### `cloudfront:setup`
+### `setup`
 
 Deploy configured in `serverless.yml` stack via CloudFormation.
 
@@ -69,3 +69,13 @@ Combination of `cloudfront:setup` and `cloudfront:build:deploy` commands with or
 ### `serverless:remove`
 
 Remove an entire stack configured in `serverless.yml` via CloudFormation.
+
+## URLS
+
+### `S3 bucket`
+
+[shastakou-store-app.s3.eu-west-1.amazonaws.com](https://shastakou-store-app.s3.eu-west-1.amazonaws.com)
+
+### `CloudFront distribution`
+
+[d33t30vomc55fl.cloudfront.net](https://d1jywj7u7zfsn3.cloudfront.net)
