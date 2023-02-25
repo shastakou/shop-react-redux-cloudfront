@@ -1,4 +1,5 @@
 service: shastakou-store-app
+org: shastakou
 
 frameworkVersion: "3"
 
