@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import PaperLayout from "~/components/PaperLayout/PaperLayout";
 import Typography from "@mui/material/Typography";
 import API_PATHS from "~/constants/apiPaths";
-import { CartItem } from "~/models/CartItem";
+import { CartItemProduct } from "~/models/CartItem";
 import { AvailableProduct } from "~/models/Product";
 import ReviewOrder from "~/components/pages/PageCart/components/ReviewOrder";
 import { OrderStatus, ORDER_STATUS_FLOW } from "~/constants/order";
@@ -35,7 +35,13 @@ export default function PageOrder() {
     {
       queryKey: ["order", { id }],
       queryFn: async () => {
-        const res = await axios.get<Order>(`${API_PATHS.order}/order/${id}`);
+        const res = await axios.get<Order>(`${API_PATHS.order}/order/${id}`, {
+          headers: {
+            Authorization: `Basic ${localStorage.getItem(
+              "authorization_token"
+            )}`,
+          },
+        });
         return res.data;
       },
     },
@@ -43,7 +49,7 @@ export default function PageOrder() {
       queryKey: "products",
       queryFn: async () => {
         const res = await axios.get<AvailableProduct[]>(
-          `${API_PATHS.bff}/product/available`
+          `${API_PATHS.product}/products`
         );
         return res.data;
       },
@@ -55,14 +61,14 @@ export default function PageOrder() {
   ] = results;
   const { mutateAsync: updateOrderStatus } = useUpdateOrderStatus();
   const invalidateOrder = useInvalidateOrder();
-  const cartItems: CartItem[] = React.useMemo(() => {
+  const cartItems: CartItemProduct[] = React.useMemo(() => {
     if (order && products) {
       return order.items.map((item: OrderItem) => {
         const product = products.find((p) => p.id === item.productId);
         if (!product) {
           throw new Error("Product not found");
         }
-        return { product, count: item.count };
+        return { productId: item.productId, product, count: item.count };
       });
     }
     return [];

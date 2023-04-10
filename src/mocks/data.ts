@@ -1,12 +1,12 @@
 import { OrderStatus } from "~/constants/order";
-import { CartItem } from "~/models/CartItem";
+import { CartItemProduct } from "~/models/CartItem";
 import { Order } from "~/models/Order";
 import { AvailableProduct, Product } from "~/models/Product";
 
 export const products: Product[] = [
   {
     description: "Short Product Description1",
-    id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
+    id: "f8ab571f-7c29-4902-a59e-fc2d066957e5",
     price: 24,
     title: "ProductOne",
   },
@@ -46,17 +46,19 @@ export const availableProducts: AvailableProduct[] = products.map(
   (product, index) => ({ ...product, count: index + 1 })
 );
 
-export const cart: CartItem[] = [
+export const cart: CartItemProduct[] = [
   {
+    productId: "f8ab571f-7c29-4902-a59e-fc2d066957e5",
     product: {
       description: "Short Product Description1",
-      id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
+      id: "f8ab571f-7c29-4902-a59e-fc2d066957e5",
       price: 24,
       title: "ProductOne",
     },
     count: 2,
   },
   {
+    productId: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
     product: {
       description: "Short Product Description7",
       id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
@@ -77,8 +79,16 @@ export const orders: Order[] = [
       comment: "",
     },
     items: [
-      { productId: "7567ec4b-b10c-48c5-9345-fc73c48a80aa", count: 2 },
-      { productId: "7567ec4b-b10c-45c5-9345-fc73c48a80a1", count: 5 },
+      {
+        productId: "f8ab571f-7c29-4902-a59e-fc2d066957e5",
+        count: 2,
+        price: 100,
+      },
+      {
+        productId: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
+        count: 5,
+        price: 200,
+      },
     ],
     statusHistory: [
       { status: OrderStatus.Open, timestamp: Date.now(), comment: "New order" },
@@ -92,7 +102,13 @@ export const orders: Order[] = [
       lastName: "Doe",
       comment: "Ship fast!",
     },
-    items: [{ productId: "7567ec4b-b10c-48c5-9345-fc73c48a80aa", count: 3 }],
+    items: [
+      {
+        productId: "f8ab571f-7c29-4902-a59e-fc2d066957e5",
+        count: 3,
+        price: 100,
+      },
+    ],
     statusHistory: [
       {
         status: OrderStatus.Sent,

@@ -2,18 +2,18 @@ import axios, { AxiosError } from "axios";
 import React from "react";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import API_PATHS from "~/constants/apiPaths";
-import { Cart, CartItem, CartItemWithProduct } from "~/models/CartItem";
+import { Cart, CartItem, CartItemProduct } from "~/models/CartItem";
 import { Product } from "~/models/Product";
 
 export function useCart() {
-  return useQuery<CartItemWithProduct[], AxiosError>("cart", async () => {
+  return useQuery<CartItemProduct[], AxiosError>("cart", async () => {
     const { data } = await axios.get<Cart>(`${API_PATHS.cart}/profile/cart`, {
       headers: {
         Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
     });
 
-    const items = data.cartItems as CartItemWithProduct[];
+    const items = data.cartItems as CartItemProduct[];
     for (const item of items) {
       const product = await axios.get<Product>(
         `${API_PATHS.product}/products/${item.productId}`

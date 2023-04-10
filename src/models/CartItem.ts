@@ -5,10 +5,10 @@ export type Cart = {
 };
 
 export type CartItem = {
-  productId?: string;
+  productId: string;
   count: number;
 };
 
-export type CartItemWithProduct = CartItem & {
+export type CartItemProduct = CartItem & {
   product: Product;
 };
