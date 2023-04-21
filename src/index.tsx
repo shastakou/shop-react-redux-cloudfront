@@ -9,10 +9,10 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import axios, { AxiosError } from "axios";
 import { theme } from "~/theme";
 
-if (import.meta.env.DEV) {
-  const { worker } = await import("./mocks/browser");
-  worker.start({ onUnhandledRequest: "bypass" });
-}
+// if (import.meta.env.DEV) {
+//   const { worker } = await import("./mocks/browser");
+//   worker.start({ onUnhandledRequest: "bypass" });
+// }
 
 function configureAuthErrorHandling() {
   axios.interceptors.response.use(undefined, async (error: AxiosError) => {

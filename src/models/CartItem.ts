@@ -1,6 +1,14 @@
 import { Product } from "~/models/Product";
 
+export type Cart = {
+  cartItems: CartItem[];
+};
+
 export type CartItem = {
-  product: Product;
+  productId: string;
   count: number;
+};
+
+export type CartItemProduct = CartItem & {
+  product: Product;
 };
