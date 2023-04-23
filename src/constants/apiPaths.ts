@@ -1,9 +1,14 @@
 const API_PATHS = {
-  product: "https://2wekguza04.execute-api.eu-west-1.amazonaws.com",
-  order: "https://nu3gdhvg0i.execute-api.eu-west-1.amazonaws.com/dev/api",
-  import: "https://qoue68xnf7.execute-api.eu-west-1.amazonaws.com/dev",
-  bff: "",
-  cart: "https://nu3gdhvg0i.execute-api.eu-west-1.amazonaws.com/dev/api",
+  product:
+    "http://shastakou-bff-service-dev.eu-west-1.elasticbeanstalk.com/bff/product",
+  // order: "https://nu3gdhvg0i.execute-api.eu-west-1.amazonaws.com/dev/api",
+  order:
+    "http://shastakou-bff-service-dev.eu-west-1.elasticbeanstalk.com/bff/cart",
+  import:
+    "http://shastakou-bff-service-dev.eu-west-1.elasticbeanstalk.com/bff/import",
+  bff: "http://shastakou-bff-service-dev.eu-west-1.elasticbeanstalk.com/bff",
+  cart: "http://shastakou-bff-service-dev.eu-west-1.elasticbeanstalk.com/bff/cart",
+  // cart: "https://nu3gdhvg0i.execute-api.eu-west-1.amazonaws.com/dev/api",
 };
 
 export default API_PATHS;
